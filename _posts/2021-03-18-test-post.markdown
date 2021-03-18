@@ -8,4 +8,4 @@ This post is for testing jekyll.
 
 Test Pdf file : [Test pdf][test-pdf]
 
-[test-pdf]: ({{ site.url }}/downloads/test.pdf)
+[test-pdf]: {{ site.url }}/downloads/test.pdf
