@@ -374,7 +374,8 @@ def createPost(g_num):
 	post_text += 'layout: post' + '\n'
 	title = '프로토 승부식 ' + str(int(g_num%10000))  + '회차 초기배당'
 	post_text += 'title:  \"' + title + '\"' + '\n'
-	now = datetime.datetime.now()
+	KST = datetime.timezone(datetime.timedelta(hours=9))
+	now = datetime.datetime.now(KST)
 	cur_time = now.strftime('%Y-%m-%d %H:%M:%S')
 	post_text += 'date:   ' + cur_time + ' +0900' + '\n'
 	post_text += '---' + '\n'
