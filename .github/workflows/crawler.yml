@@ -5,8 +5,7 @@ name: Python application
 
 on:
   schedule:
-    - cron: '35/60 14 * * *'
-    #- cron: '5/60 5 * * 1,5'
+    - cron: '*/60 5 * * 1,5'
   workflow_dispatch:
     inputs:
       logLevel:
