@@ -20,8 +20,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
-temp_c_file = "./crawled_input.xlsx"
-
 def extractDataframeFromHTML(page_src, table_id):
 	table = page_src.find(id = table_id)
 	table_rows = table.find_all('tr')
@@ -93,7 +91,7 @@ def updateURL():
 	new_url = 'http://www.betman.co.kr/main/mainPage/gamebuy/closedGameSlip.do?frameType=typeA&gmId=G101&gmTs='
 	new_url += str(g_num)
 
-	return new_url
+	return new_url, g_num
 
 
 
@@ -369,9 +367,37 @@ def getDataFromURL(url, filename):
 
 	excel_writer.save()
 
+def createPost(g_num):
+
+	post_text = ''
+	post_text += '---' + '\n'
+	post_text += 'layout: post' + '\n'
+	title = '프로토 승부식 ' + str(int(g_num%10000))  + '회차 초기배당'
+	post_text += 'title:  \"' + title + '\"' + '\n'
+	now = datetime.datetime.now()
+	cur_time = now.strftime('%Y-%m-%d %H:%M:%S')
+	post_text += 'date:   ' + cur_time + ' +0900' + '\n'
+	post_text += '---' + '\n'
+	post_text += '' + '\n' # empty contents
+	post_text += '' + '\n'
+	post_text += 'Excel file : [' + str(g_num) + '][' + str(g_num) + ']' + '\n'
+	post_text += '' + '\n'
+	post_text += '[' + str(g_num) + ']: {{ site.url }}/crawler/output/' + str(g_num) + '.xlsx' + '\n'
+
+	date = now.strftime('%Y-%m-%d-')
+	f = open('./_posts/' + date + title.replace(' ', '-') + '.markdown', 'w')
+	f.write(post_text)
+	f.close()
+
 if __name__ == "__main__":
 
-	url = updateURL()
-	getDataFromURL(url, temp_c_file)
+	url, g_num = updateURL()
+
+	o_filename = "crawler/output/"
+	o_filename += str(g_num) + ".xlsx"
+
+	getDataFromURL(url, o_filename)
+
+	createPost(g_num)
 	print (url)
 
