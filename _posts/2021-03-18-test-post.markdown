@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "Test Post"
+date:   2021-03-18 19:30:58 +0900
+categories: jekyll update
+---
+This post is for testing jekyll.
+
+Test Pdf file : [Test pdf][test-pdf]
+
+[test-pdf]: ({{site.url}}/downloads/test.pdf)
