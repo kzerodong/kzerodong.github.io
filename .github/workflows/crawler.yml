@@ -21,7 +21,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r crawler/requirements.txt; fi
+        pip install -r crawler/requirements.txt
     - name: Run Crawler with python
       run: |
         python "crawler/crawler.py"
