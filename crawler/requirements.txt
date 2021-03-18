@@ -32,4 +32,3 @@ urllib3==1.26.3
 webdriver-manager==3.3.0
 xlrd==1.2.0
 XlsxWriter==1.2.9
-xvfbwrapper==0.2.9
