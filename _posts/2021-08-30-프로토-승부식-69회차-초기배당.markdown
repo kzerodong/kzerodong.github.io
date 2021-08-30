@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "프로토 승부식 69회차 초기배당"
+date:   2021-08-30 14:08:09 +0900
+---
+
+
+Excel file : [210069][210069]
+
+[210069]: {{ site.url }}/crawler/output/210069.xlsx
